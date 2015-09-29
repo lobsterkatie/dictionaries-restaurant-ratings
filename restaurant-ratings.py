@@ -39,13 +39,17 @@ while (not input_valid):
     else:
         try:
             user_input = int(user_input)
+            if (user_input < 1 or user_input > 2):
+                print "ERROR: choice must be 1 or 2."
+                user_input = raw_input("Choose 1 to update a restaurant or 2 to add a new one.\nPress enter to exit. >")
+                continue
         except:
-            print "Error: please enter <1> or <2>"
+            print "Error: please enter an integer"
             user_input = raw_input("Choose 1 to update a restaurant or 2 to add a new one.\nPress enter to exit. >") 
-            break
+            continue
         input_valid = True
 
-#now we have integral user input
+#now we have user input which is 1 or 2
 
 if user_input == 1:
     restaurant_to_update = raw_input("Which restaurant would you like to update? >")
@@ -77,7 +81,7 @@ if user_input == 1:
 
     restaurant_ratings[restaurant_to_update] = new_rating
 
-elif user_input == 2:
+if user_input == 2:
     new_restaurant_name = raw_input("What's the name of the new restaurant? ")
     new_rating = raw_input("Please enter a new rating on a scale of 1 to 5 >")
     input_valid = False
@@ -98,9 +102,6 @@ elif user_input == 2:
 
     restaurant_ratings[new_restaurant_name] = new_rating
 
-else:
-    print "ERROR: you suck"
-    sys.exit()
 
 sorted_restaurant_ratings = sorted(restaurant_ratings.items())
 print sorted_restaurant_ratings
