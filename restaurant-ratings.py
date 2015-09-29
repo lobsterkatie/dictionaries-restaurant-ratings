@@ -48,17 +48,17 @@ while (not input_valid):
 #now we have integral user input
 
 if user_input == 1:
-    restaurant_to_update = raw_input("Which restaurant would you like to update?")
+    restaurant_to_update = raw_input("Which restaurant would you like to update? >")
     input_valid = False
     while (not input_valid):
         if restaurant_to_update in restaurant_ratings:
             input_valid = True
             break
         else:
-            print "ERROR: Please enter a restaurant from the list"
-            restaurant_to_update = raw_input("Which restaurant would you like to update?")
+            print "ERROR: Please enter a restaurant from the list."
+            restaurant_to_update = raw_input("Which restaurant would you like to update? >")
 
-    new_rating = raw_input("Please enter a new rating on a scale of 1 to 5 >")
+    new_rating = raw_input("Please enter a new rating on a scale of 1 to 5. >")
     input_valid = False
     while (not input_valid):
         try:
@@ -67,10 +67,10 @@ if user_input == 1:
                 input_valid = True
                 break
             else:
-                print "Error: please enter a rating between 1 and 5"
-                new_rating = raw_input(" >")
+                print "ERROR: rating needs to be between 1 and 5. >"
+                new_rating = raw_input("Please enter a new rating on a scale of 1 to 5. >")
         except:
-            print "Error: please enter a new rating"
+            print "ERROR: rating needs to be an integer"
             new_rating = raw_input("Please enter a new rating on a scale of 1 to 5 >")
             continue
         input_valid = True
